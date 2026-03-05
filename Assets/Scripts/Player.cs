@@ -1,0 +1,41 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Player : MonoBehaviour
+{
+    [SerializeField] private InputReader _inputReader;
+    [SerializeField] private KeyCode _jumpKey = KeyCode.Space;
+    
+    private Mover _mover;
+    
+    private void Awake()
+    {
+        _mover = GetComponent<Mover>();
+    }
+
+    private void OnEnable()
+    {
+        _inputReader.InputAxesChanged += OnInputAxes;
+        _inputReader.KeyPressed += OnKeyPressed;
+    }
+
+    private void OnDisable()
+    {
+        _inputReader.InputAxesChanged -= OnInputAxes;
+        _inputReader.KeyPressed -= OnKeyPressed;
+    }
+    
+
+    private void OnInputAxes(Vector2 axes)
+    {
+        _mover.Move(axes);
+    }
+
+    private void OnKeyPressed(KeyCode keyCode)
+    {
+        if(keyCode == _jumpKey)
+            _mover.Jump();
+    }
+}
