@@ -12,7 +12,9 @@ public class Visualizer : MonoBehaviour
     private Transform _transform;
 
     private float _lastX = 1f;
+    
     private int _isWalkingAnimFlag;
+    private int _attackAnimTrigger;
 
     private void Awake()
     {
@@ -20,6 +22,7 @@ public class Visualizer : MonoBehaviour
         _animator = GetComponent<Animator>();
         
         _isWalkingAnimFlag = Animator.StringToHash("isWalking");
+        _attackAnimTrigger = Animator.StringToHash("attack");
     }
 
     public void OnMovement(float inputX)
@@ -35,5 +38,10 @@ public class Visualizer : MonoBehaviour
         }
         
         _animator.SetBool(_isWalkingAnimFlag, (inputX != 0));
+    }
+
+    public void OnAttack()
+    {
+        _animator.SetTrigger(_attackAnimTrigger);
     }
 }

@@ -11,8 +11,11 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _moveSpeed = 4f;
     [SerializeField] private float _moveForce = 6f;
     [SerializeField] private float _jumpForce = 1f;
+    [SerializeField] private float _jumpCooldown = 1f;
     [SerializeField] private float _inAirMoveModifier = 0.5f;
     [SerializeField] private LayerMask _groundMask;
+
+    public bool IsGrounded ()=> _isGrounded;
     
     private Rigidbody2D _rigidbody;
     private Visualizer _visualizer;
@@ -21,6 +24,7 @@ public class Mover : MonoBehaviour
 
     private bool _isGrounded = false;
     private bool _isJumping = false;
+    private bool _canJump = true;
 
     private void Awake()
     {
@@ -31,15 +35,9 @@ public class Mover : MonoBehaviour
     private void FixedUpdate()
     {
         CheckGrounded();
-        
         ClampInAirMovement();
         PerformJump();
         PerformMovement();
-    }
-
-    private void CheckGrounded()
-    {
-        _isGrounded = IsGrounded();
     }
 
     public void Move(Vector2 inputAxes)
@@ -62,7 +60,8 @@ public class Mover : MonoBehaviour
 
     public void Jump()
     {
-        _isJumping = true;
+        if(_canJump)
+            _isJumping = true;
     }
 
     private void PerformJump()
@@ -74,6 +73,8 @@ public class Mover : MonoBehaviour
             
             _rigidbody.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _isJumping = false;
+            
+            StartCoroutine(JumpCooldown(_jumpCooldown));
         }
     }
 
@@ -117,17 +118,24 @@ public class Mover : MonoBehaviour
         }
     }
 
-    private bool IsGrounded()
+    private void CheckGrounded()
     {
         float distance = MarginFloat;
         
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, distance, _groundMask);
-        
+
         if (hit.collider != null)
-        {
-            return true;
-        }
+            _isGrounded = true;
+        else
+            _isGrounded = false;
+    }
+    
+    private IEnumerator JumpCooldown(float seconds)
+    {
+        _canJump = false;
         
-        return false;
+        yield return new WaitForSeconds(seconds);
+
+        _canJump = true;
     }
 }

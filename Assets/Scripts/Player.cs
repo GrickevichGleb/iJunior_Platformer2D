@@ -6,13 +6,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
-    [SerializeField] private KeyCode _jumpKey = KeyCode.Space;
+    [SerializeField] private KeyCode _jumpKey = KeyCode.UpArrow;
+    [SerializeField] private KeyCode _attackKey = KeyCode.Space;
     
     private Mover _mover;
+    private Attacker _attacker;
     
     private void Awake()
     {
         _mover = GetComponent<Mover>();
+        _attacker = GetComponent<Attacker>();
     }
 
     private void OnEnable()
@@ -37,5 +40,8 @@ public class Player : MonoBehaviour
     {
         if(keyCode == _jumpKey)
             _mover.Jump();
+        
+        if(keyCode == _attackKey)
+            _attacker.Attack();
     }
 }
