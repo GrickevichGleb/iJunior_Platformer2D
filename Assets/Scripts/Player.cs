@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Mover))]
+[RequireComponent(typeof(Attacker))]
 public class Player : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;

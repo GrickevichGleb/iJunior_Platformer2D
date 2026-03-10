@@ -12,9 +12,7 @@ public class Enemy : MonoBehaviour
     private WayPoint[] _wayPoints;
     
     private Transform _currentWayPoint;
-    private int _currentWayPointInd = 0;
-    private bool _isForwardMove = true;
-    
+
     private void Awake()
     {
         _mover = GetComponent<Mover>();

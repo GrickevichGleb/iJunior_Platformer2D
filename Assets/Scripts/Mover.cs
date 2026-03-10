@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Visualizer))]
 public class Mover : MonoBehaviour
 {
     private const float MarginFloat = 0.01f;
@@ -16,7 +17,8 @@ public class Mover : MonoBehaviour
     [SerializeField] private LayerMask _groundMask;
 
     public bool IsGrounded ()=> _isGrounded;
-    
+
+    private Transform _transform;
     private Rigidbody2D _rigidbody;
     private Visualizer _visualizer;
 
@@ -28,6 +30,7 @@ public class Mover : MonoBehaviour
 
     private void Awake()
     {
+        _transform = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _visualizer = GetComponent<Visualizer>();
     }
@@ -43,6 +46,15 @@ public class Mover : MonoBehaviour
     public void Move(Vector2 inputAxes)
     {
         _moveInput = inputAxes;
+        
+        if (inputAxes.x > 0f)
+        {
+            _transform.rotation = Quaternion.identity;
+        }
+        else if (inputAxes.x < 0f)
+        {
+            _transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+        }
         
         _visualizer.OnMovement(inputAxes.x);
     }
