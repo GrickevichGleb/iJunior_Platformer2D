@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8828796683451949692}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 8758423674246400930}
   - component: {fileID: 167575843117294705}
   - component: {fileID: 8159108422489630079}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Coin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6712532628423754254}
   - component: {fileID: 4779750178694093968}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6297738449707419730}
   - component: {fileID: 2092417830098282983}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -47,50 +47,8 @@ public class PlatformPatroller : MonoBehaviour
         
         MoveToWayPoint();
     }
-    
-    private void MoveToWayPoint()
-    {
-        Vector2 simulatedInput = Vector2.zero;
 
-        if (_currentWayPoint.x > transform.position.x)
-            simulatedInput.x = 1f;
-        else
-            simulatedInput.x = -1;
-
-        if (_isMovementPaused)
-            simulatedInput = Vector2.zero;
-        
-        _mover.Move(simulatedInput);
-    }
-    
-    private void SetNextWayPointInd()
-    {
-        int newIndex = (_currentWayPointInd + 1) % _wayPoints.Length;
-        
-        _currentWayPointInd = newIndex;
-        _currentWayPoint = _wayPoints[newIndex];
-    }
-
-    private bool HasReachedWayPoint()
-    {
-        Vector3 direction = _currentWayPoint - transform.position;
-
-        if (direction.sqrMagnitude <= ReachToleranceSqr)
-            return true;
-
-        return false;
-    }
-
-    private IEnumerator StopForSecondsCoroutine(float seconds)
-    {
-        _isMovementPaused = true;
-        
-        yield return new WaitForSeconds(seconds);
-
-        _isMovementPaused = false;
-    }
-
-    private void SetPatrolPoints()
+    public void SetPatrolPoints()
     {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, ReachToleranceSqr, _groundMask);
         
@@ -116,5 +74,52 @@ public class PlatformPatroller : MonoBehaviour
             _wayPoints = new Vector3[] { leftTopEdge, rightTopEdge };
             _currentWayPoint = _wayPoints[0];
         }
+    }
+
+    public void MoveTowards(Vector3 target)
+    {
+        _currentWayPoint = target;
+    }
+
+    private void MoveToWayPoint()
+    {
+        Vector2 simulatedInput = Vector2.zero;
+
+        if (_currentWayPoint.x > transform.position.x)
+            simulatedInput.x = 1f;
+        else
+            simulatedInput.x = -1;
+
+        if (_isMovementPaused)
+            simulatedInput = Vector2.zero;
+        
+        _mover.Move(simulatedInput);
+    }
+
+    private void SetNextWayPointInd()
+    {
+        int newIndex = (_currentWayPointInd + 1) % _wayPoints.Length;
+        
+        _currentWayPointInd = newIndex;
+        _currentWayPoint = _wayPoints[newIndex];
+    }
+
+    private bool HasReachedWayPoint()
+    {
+        Vector3 direction = _currentWayPoint - transform.position;
+
+        if (direction.sqrMagnitude <= ReachToleranceSqr)
+            return true;
+
+        return false;
+    }
+
+    private IEnumerator StopForSecondsCoroutine(float seconds)
+    {
+        _isMovementPaused = true;
+        
+        yield return new WaitForSeconds(seconds);
+
+        _isMovementPaused = false;
     }
 }

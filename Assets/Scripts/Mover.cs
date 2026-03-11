@@ -20,6 +20,7 @@ public class Mover : MonoBehaviour
 
     private Transform _transform;
     private Rigidbody2D _rigidbody;
+    private Collider2D _collider;
     private Visualizer _visualizer;
 
     private Vector2 _moveInput;
@@ -32,6 +33,7 @@ public class Mover : MonoBehaviour
     {
         _transform = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody2D>();
+        _collider = GetComponent<Collider2D>();
         _visualizer = GetComponent<Visualizer>();
     }
 
@@ -58,7 +60,13 @@ public class Mover : MonoBehaviour
         
         _visualizer.OnMovement(inputAxes.x);
     }
-
+    
+    public void Jump()
+    {
+        if(_canJump)
+            _isJumping = true;
+    }
+    
     private void PerformMovement()
     {
         if (_moveInput == Vector2.zero)
@@ -68,12 +76,6 @@ public class Mover : MonoBehaviour
         }
         
         ApplyMoveForce(_moveInput);
-    }
-
-    public void Jump()
-    {
-        if(_canJump)
-            _isJumping = true;
     }
 
     private void PerformJump()
@@ -149,5 +151,14 @@ public class Mover : MonoBehaviour
         yield return new WaitForSeconds(seconds);
 
         _canJump = true;
+    }
+    
+    private void OnDisable()
+    {
+        _moveInput = Vector2.zero;
+        _rigidbody.velocity = Vector2.zero;
+        
+        _rigidbody.isKinematic = true;
+        _collider.isTrigger = true;
     }
 }
