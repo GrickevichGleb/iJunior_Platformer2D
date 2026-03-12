@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 4866488819111028756}
   - component: {fileID: 2400613273001438771}
   - component: {fileID: 10895166612518450}
+  - component: {fileID: 21574648102354044}
   m_Layer: 7
   m_Name: Skeleton_enemy
   m_TagString: Untagged
@@ -249,8 +250,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20651c8de88994e0ea72958828813bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spotDistance: 8
-  _chaseMaxRange: 12
 --- !u!114 &1216212375763185417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,3 +310,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4ce746de4e444ac9cf82cd93f79eb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &21574648102354044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5312961409276128697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0207b6f2daf45428494342e35d5fde04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spotDistance: 8
