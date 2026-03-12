@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
 
     private void AttackIfPossible()
     {
-        float attackRangeSqr = _attacker._range * _attacker._range;
+        float attackRangeSqr = _attacker.Range() * _attacker.Range();
         Vector3 direction = _target.transform.position - transform.position;
         
         if(Vector3.SqrMagnitude(direction) <= attackRangeSqr)
