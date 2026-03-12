@@ -10,6 +10,7 @@ public class Mover : MonoBehaviour
     private const float MarginFloat = 0.01f;
     
     [SerializeField] private float _moveSpeed = 4f;
+    [SerializeField] private float _runSpeedMultiplier = 2f;
     [SerializeField] private float _moveForce = 6f;
     [SerializeField] private float _jumpForce = 1f;
     [SerializeField] private float _jumpCooldown = 1f;
@@ -25,12 +26,16 @@ public class Mover : MonoBehaviour
 
     private Vector2 _moveInput;
 
+    private float _currentMoveSpeed;
+    
     private bool _isGrounded = false;
     private bool _isJumping = false;
     private bool _canJump = true;
 
     private void Awake()
     {
+        _currentMoveSpeed = _moveSpeed;
+        
         _transform = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
@@ -65,6 +70,14 @@ public class Mover : MonoBehaviour
     {
         if(_canJump)
             _isJumping = true;
+    }
+
+    public void SwitchRunning(bool running)
+    {
+        if (running)
+            _currentMoveSpeed = _moveSpeed * _runSpeedMultiplier;
+        else
+            _currentMoveSpeed = _moveSpeed;
     }
     
     private void PerformMovement()
@@ -107,13 +120,13 @@ public class Mover : MonoBehaviour
 
         if (_isGrounded)
         {
-            if (Mathf.Abs(_rigidbody.velocity.x) < _moveSpeed)
+            if (Mathf.Abs(_rigidbody.velocity.x) < _currentMoveSpeed)
                 _rigidbody.AddForce(direction * _moveForce);
             
         }
         else
         {
-            if(Mathf.Abs(_rigidbody.velocity.x) * _inAirMoveModifier < _moveSpeed)
+            if(Mathf.Abs(_rigidbody.velocity.x) * _inAirMoveModifier < _currentMoveSpeed)
                 _rigidbody.AddForce(direction.normalized * (_moveForce * _inAirMoveModifier)); 
         }
     }
@@ -123,8 +136,8 @@ public class Mover : MonoBehaviour
         if (!_isGrounded)
         {
             float clampedX = Mathf.Clamp(
-                _rigidbody.velocity.x, -_moveSpeed * _inAirMoveModifier,
-                _moveSpeed * _inAirMoveModifier);
+                _rigidbody.velocity.x, -_currentMoveSpeed * _inAirMoveModifier,
+                _currentMoveSpeed * _inAirMoveModifier);
             
             Vector2 inAirVelocity = new Vector2(clampedX, _rigidbody.velocity.y);
 

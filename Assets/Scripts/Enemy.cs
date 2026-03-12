@@ -9,8 +9,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _spotDistance = 8f;
     [SerializeField] private float _chaseMaxRange = 12f;
     
-    private Mover _mover;
     private PlatformPatroller _platformPatroller;
+    private PlayerChaser _playerChaser;
+    
+    private Mover _mover;
     private Attacker _attacker;
     private Health _health;
 
@@ -23,9 +25,11 @@ public class Enemy : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         
         _mover = GetComponent<Mover>();
-        _platformPatroller = GetComponent<PlatformPatroller>();
         _attacker = GetComponent<Attacker>();
         _health = GetComponent<Health>();
+        
+        _platformPatroller = GetComponent<PlatformPatroller>();
+        _playerChaser = GetComponent<PlayerChaser>();
     }
 
     private void FixedUpdate()
@@ -35,8 +39,15 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if(_target != null)
-            _platformPatroller.MoveTowards(_target.position);
+        if (_target != null)
+        {
+            _playerChaser.Chase();
+            AttackIfPossible();
+        }
+        else
+        {
+            _platformPatroller.Patrol();
+        }
     }
 
     private void OnEnable()
@@ -47,6 +58,15 @@ public class Enemy : MonoBehaviour
     private void OnDisable()
     {
         _health.Death -= OnDeath;
+    }
+
+    private void AttackIfPossible()
+    {
+        float attackRangeSqr = _attacker._range * _attacker._range;
+        Vector3 direction = _target.transform.position - transform.position;
+        
+        if(Vector3.SqrMagnitude(direction) <= attackRangeSqr)
+            _attacker.Attack();
     }
 
     private void CheckForPlayerInSight()
@@ -61,15 +81,16 @@ public class Enemy : MonoBehaviour
 
             if (hit.collider.gameObject.TryGetComponent(out Player player))
             {
-                _attacker.Attack();
                 _target = player.transform;
+                _playerChaser.SetTarget(_target);
+                
                 return;
             }
         }
 
         if (_target == null)
             return;
-        
+
         _target = null;
         _platformPatroller.SetPatrolPoints();
     }

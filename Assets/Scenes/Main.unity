@@ -1698,6 +1698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 7
+  _runSpeedMultiplier: 2
   _moveForce: 210
   _jumpForce: 83
   _jumpCooldown: 0.8
@@ -1750,9 +1751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22f7f9529dc3149729a2fbed2c1d1b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 20
-  _range: 2.7
-  _cooldown: 0.45
 --- !u!114 &1988739079
 MonoBehaviour:
   m_ObjectHideFlags: 0

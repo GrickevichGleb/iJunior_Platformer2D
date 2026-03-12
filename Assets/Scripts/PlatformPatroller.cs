@@ -35,7 +35,10 @@ public class PlatformPatroller : MonoBehaviour
             SetPatrolPoints();
 
         _isGrounded = _mover.IsGrounded();
+    }
 
+    public void Patrol()
+    {
         if (_wayPoints == null)
             return;
         
@@ -50,6 +53,8 @@ public class PlatformPatroller : MonoBehaviour
 
     public void SetPatrolPoints()
     {
+        _mover.SwitchRunning(false);
+        
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, ReachToleranceSqr, _groundMask);
         
         if (hit.collider != null)
@@ -74,11 +79,6 @@ public class PlatformPatroller : MonoBehaviour
             _wayPoints = new Vector3[] { leftTopEdge, rightTopEdge };
             _currentWayPoint = _wayPoints[0];
         }
-    }
-
-    public void MoveTowards(Vector3 target)
-    {
-        _currentWayPoint = target;
     }
 
     private void MoveToWayPoint()

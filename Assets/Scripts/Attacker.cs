@@ -7,9 +7,9 @@ using UnityEngine;
 [RequireComponent(typeof(Visualizer))]
 public class Attacker : MonoBehaviour
 {
-    [SerializeField] private int _damage = 20;
-    [SerializeField] private float _range = 2.5f;
-    [SerializeField] private float _cooldown = 1f;
+    public int _damage { get; private set; } = 20;
+    public float _range { get; private set; } = 2.5f;
+    public float _cooldown { get; private set; } = 1f;
 
     private Collider2D _collider;
     private Visualizer _visualizer;
