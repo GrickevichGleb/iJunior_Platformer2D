@@ -291,9 +291,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 898112807}
-        m_TargetAssemblyTypeName: AudioMenu, Assembly-CSharp
-        m_MethodName: SetButtonsVolume
+      - m_Target: {fileID: 621042325}
+        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
+        m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 141105546}
   - component: {fileID: 141105548}
   - component: {fileID: 141105547}
+  - component: {fileID: 141105549}
   m_Layer: 5
   m_Name: BackgroundVolume
   m_TagString: Untagged
@@ -448,6 +449,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141105545}
   m_CullTransparentMesh: 1
+--- !u!114 &141105549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141105545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f81c4c67cbef490693bb4851d9d4755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _master: {fileID: 24300002, guid: 553d14578dcaa47cbbf4e822bde27c30, type: 2}
+  _volumeParameter: 2
+  _slider: {fileID: 924773737}
 --- !u!1 &148549063
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,6 +475,7 @@ GameObject:
   - component: {fileID: 148549064}
   - component: {fileID: 148549066}
   - component: {fileID: 148549065}
+  - component: {fileID: 148549067}
   m_Layer: 5
   m_Name: MasterVolume
   m_TagString: Untagged
@@ -525,6 +542,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148549063}
   m_CullTransparentMesh: 1
+--- !u!114 &148549067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148549063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f81c4c67cbef490693bb4851d9d4755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _master: {fileID: 24300002, guid: 553d14578dcaa47cbbf4e822bde27c30, type: 2}
+  _volumeParameter: 0
+  _slider: {fileID: 1730769767}
 --- !u!1 &173842539
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +919,7 @@ GameObject:
   - component: {fileID: 463480717}
   - component: {fileID: 463480719}
   - component: {fileID: 463480718}
+  - component: {fileID: 463480720}
   m_Layer: 5
   m_Name: SoundControl
   m_TagString: Untagged
@@ -954,6 +987,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463480716}
   m_CullTransparentMesh: 1
+--- !u!114 &463480720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463480716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a72312134349430f944569be245a56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnIcon: {fileID: 1808209458}
+  OffIcon: {fileID: 1195567842}
+  _master: {fileID: 24300002, guid: 553d14578dcaa47cbbf4e822bde27c30, type: 2}
+  _volumeParameter: 0
 --- !u!1 &486234889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,8 +1214,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 898112807}
-        m_TargetAssemblyTypeName: AudioMenu, Assembly-CSharp
+      - m_Target: {fileID: 463480720}
+        m_TargetAssemblyTypeName: AudioToggle, Assembly-CSharp
         m_MethodName: ToggleSound
         m_Mode: 1
         m_Arguments:
@@ -1226,6 +1275,7 @@ GameObject:
   - component: {fileID: 621042322}
   - component: {fileID: 621042324}
   - component: {fileID: 621042323}
+  - component: {fileID: 621042325}
   m_Layer: 5
   m_Name: ButtonsVolume
   m_TagString: Untagged
@@ -1292,6 +1342,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621042321}
   m_CullTransparentMesh: 1
+--- !u!114 &621042325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621042321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f81c4c67cbef490693bb4851d9d4755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _master: {fileID: 24300002, guid: 553d14578dcaa47cbbf4e822bde27c30, type: 2}
+  _volumeParameter: 1
+  _slider: {fileID: 126807849}
 --- !u!1 &640024402
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,7 +1981,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 898112806}
-  - component: {fileID: 898112807}
   m_Layer: 0
   m_Name: AudioMenu
   m_TagString: Untagged
@@ -1940,24 +2004,6 @@ Transform:
   - {fileID: 886326191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &898112807
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898112805}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bad2d06cc6d44c5dbf80074023f048b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _master: {fileID: 24300002, guid: 553d14578dcaa47cbbf4e822bde27c30, type: 2}
-  OnIcon: {fileID: 1808209456}
-  OffIcon: {fileID: 1195567840}
-  _masterVolumeSlider: {fileID: 1730769767}
-  _buttonsVolumeSlider: {fileID: 126807849}
-  _backgroundVolumeSlider: {fileID: 924773737}
 --- !u!1 &923548136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,9 +2169,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 898112807}
-        m_TargetAssemblyTypeName: AudioMenu, Assembly-CSharp
-        m_MethodName: SetBackgroundVolume
+      - m_Target: {fileID: 141105549}
+        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
+        m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3550,9 +3596,9 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 898112807}
-        m_TargetAssemblyTypeName: AudioMenu, Assembly-CSharp
-        m_MethodName: SetMasterVolume
+      - m_Target: {fileID: 148549067}
+        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
+        m_MethodName: SetVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
