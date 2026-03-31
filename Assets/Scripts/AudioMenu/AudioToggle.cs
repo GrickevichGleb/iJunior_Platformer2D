@@ -12,8 +12,8 @@ public class AudioToggle : MonoBehaviour
     private const float OnVolume = 0f;
     private const float OffVolume = -80f;
     
-    [SerializeField] private Image OnIcon;
-    [SerializeField] private Image OffIcon;
+    [SerializeField] private Image _onIcon;
+    [SerializeField] private Image _offIcon;
 
     [SerializeField] private AudioMixerGroup _master;
     [SerializeField] private VolumeParameters _volumeParameter;
@@ -37,8 +37,8 @@ public class AudioToggle : MonoBehaviour
         else 
             _master.audioMixer.SetFloat(_volumeParameter.ToString(), OffVolume);
         
-        OnIcon.gameObject.SetActive(_isVolumeOn);
-        OffIcon.gameObject.SetActive(!_isVolumeOn);
+        _onIcon.gameObject.SetActive(_isVolumeOn);
+        _offIcon.gameObject.SetActive(!_isVolumeOn);
         
         PlayerPrefs.SetInt(IsVolumeOn, _isVolumeOn ? 1 : 0);
     }

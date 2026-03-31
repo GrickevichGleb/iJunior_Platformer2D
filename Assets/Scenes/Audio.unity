@@ -290,19 +290,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 621042325}
-        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: SetVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &131198230
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,8 +987,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a72312134349430f944569be245a56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OnIcon: {fileID: 1808209458}
-  OffIcon: {fileID: 1195567842}
+  _onIcon: {fileID: 1808209458}
+  _offIcon: {fileID: 1195567842}
   _master: {fileID: 24300002, guid: 553d14578dcaa47cbbf4e822bde27c30, type: 2}
   _volumeParameter: 0
 --- !u!1 &486234889
@@ -2168,19 +2156,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 141105549}
-        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: SetVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1195567840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2215,8 +2191,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05, y: 0}
   m_AnchorMax: {x: 0.3, y: 1}
-  m_AnchoredPosition: {x: -17.5, y: 0}
-  m_SizeDelta: {x: -45, y: -20}
+  m_AnchoredPosition: {x: -16.5, y: 0}
+  m_SizeDelta: {x: -43, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1195567842
 MonoBehaviour:
@@ -3595,19 +3571,7 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 148549067}
-        m_TargetAssemblyTypeName: VolumeSlider, Assembly-CSharp
-        m_MethodName: SetVolume
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1793546662
 GameObject:
   m_ObjectHideFlags: 0

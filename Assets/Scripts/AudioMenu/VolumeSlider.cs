@@ -17,10 +17,16 @@ public class VolumeSlider : MonoBehaviour
     
     private void Start()
     {
+        _slider.onValueChanged.AddListener(SetVolume);
         _slider.value = PlayerPrefs.GetFloat(_volumeParameter.ToString(), MaxSliderValue);
     }
 
-    public void SetVolume(float value)
+    private void OnDisable()
+    {
+        _slider.onValueChanged.RemoveListener(SetVolume);
+    }
+
+    private void SetVolume(float value)
     {
         float volume = Mathf.Clamp(value, MinSliderValue, MaxSliderValue);
         
