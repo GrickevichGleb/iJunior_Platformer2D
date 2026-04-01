@@ -17,8 +17,12 @@ public class VolumeSlider : MonoBehaviour
     
     private void Start()
     {
-        _slider.onValueChanged.AddListener(SetVolume);
         _slider.value = PlayerPrefs.GetFloat(_volumeParameter.ToString(), MaxSliderValue);
+    }
+
+    private void OnEnable()
+    {
+        _slider.onValueChanged.AddListener(SetVolume);
     }
 
     private void OnDisable()

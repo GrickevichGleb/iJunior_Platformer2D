@@ -710,10 +710,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1678835791}
   - {fileID: 1820943095}
   - {fileID: 1247307612}
   - {fileID: 1421230247}
-  - {fileID: 1678835791}
   m_Father: {fileID: 886326191}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.1, y: 0}
@@ -987,6 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a72312134349430f944569be245a56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _button: {fileID: 585598006}
   _onIcon: {fileID: 1808209458}
   _offIcon: {fileID: 1195567842}
   _master: {fileID: 24300002, guid: 553d14578dcaa47cbbf4e822bde27c30, type: 2}
@@ -1201,19 +1202,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 585598007}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 463480720}
-        m_TargetAssemblyTypeName: AudioToggle, Assembly-CSharp
-        m_MethodName: ToggleSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &585598007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2319,6 +2308,7 @@ GameObject:
   - component: {fileID: 1247307615}
   - component: {fileID: 1247307614}
   - component: {fileID: 1247307613}
+  - component: {fileID: 1247307616}
   m_Layer: 5
   m_Name: Button2
   m_TagString: Untagged
@@ -2389,19 +2379,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1247307614}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1678835789}
-        m_TargetAssemblyTypeName: ButtonsAudioPlayer, Assembly-CSharp
-        m_MethodName: PlayClip
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1247307614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2440,6 +2418,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1247307611}
   m_CullTransparentMesh: 1
+--- !u!114 &1247307616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247307611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cdd80d4ae6a4c469ee5ce4bcbe8d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonsAudioPlayer: {fileID: 1678835789}
+  _index: 1
 --- !u!1 &1247575661
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,6 +2653,7 @@ GameObject:
   - component: {fileID: 1421230250}
   - component: {fileID: 1421230249}
   - component: {fileID: 1421230248}
+  - component: {fileID: 1421230251}
   m_Layer: 5
   m_Name: Button3
   m_TagString: Untagged
@@ -2731,19 +2724,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1421230249}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1678835789}
-        m_TargetAssemblyTypeName: ButtonsAudioPlayer, Assembly-CSharp
-        m_MethodName: PlayClip
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1421230249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2782,6 +2763,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421230246}
   m_CullTransparentMesh: 1
+--- !u!114 &1421230251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421230246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cdd80d4ae6a4c469ee5ce4bcbe8d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonsAudioPlayer: {fileID: 1678835789}
+  _index: 2
 --- !u!1 &1465713335
 GameObject:
   m_ObjectHideFlags: 0
@@ -3367,7 +3362,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33be0f5c131db49aa87013854a6a9432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonsAudioClips:
+  _audioClips:
   - {fileID: 8300000, guid: 9c462fe6d3eab404f8d6145e37c86e3f, type: 3}
   - {fileID: 8300000, guid: 6a2afecca0d034c478d45a575ffe5745, type: 3}
   - {fileID: 8300000, guid: c74a84ab504b64ebe8c9b15b3a605808, type: 3}
@@ -3695,6 +3690,7 @@ GameObject:
   - component: {fileID: 1820943098}
   - component: {fileID: 1820943097}
   - component: {fileID: 1820943096}
+  - component: {fileID: 1820943099}
   m_Layer: 5
   m_Name: Button1
   m_TagString: Untagged
@@ -3765,19 +3761,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1820943097}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1678835789}
-        m_TargetAssemblyTypeName: ButtonsAudioPlayer, Assembly-CSharp
-        m_MethodName: PlayClip
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1820943097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3816,6 +3800,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820943094}
   m_CullTransparentMesh: 1
+--- !u!114 &1820943099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1820943094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cdd80d4ae6a4c469ee5ce4bcbe8d94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonsAudioPlayer: {fileID: 1678835789}
+  _index: 0
 --- !u!1 &1948727046
 GameObject:
   m_ObjectHideFlags: 0

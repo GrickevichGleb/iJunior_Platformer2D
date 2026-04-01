@@ -11,6 +11,8 @@ public class AudioToggle : MonoBehaviour
 
     private const float OnVolume = 0f;
     private const float OffVolume = -80f;
+
+    [SerializeField] private Button _button;
     
     [SerializeField] private Image _onIcon;
     [SerializeField] private Image _offIcon;
@@ -26,6 +28,16 @@ public class AudioToggle : MonoBehaviour
         
         if(!_isVolumeOn)
             ToggleSound();
+    }
+
+    private void OnEnable()
+    {
+        _button.onClick.AddListener(ToggleSound);
+    }
+
+    private void OnDisable()
+    {
+        _button.onClick.RemoveListener(ToggleSound);
     }
 
     public void ToggleSound()
