@@ -2235,10 +2235,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4074649478222584536, guid: 4746eb5ce1d6344f88b5b8beef9dfba2, type: 3}
-      propertyPath: m_Name
-      value: HealthBar
-      objectReference: {fileID: 0}
     - target: {fileID: 5312961409276128697, guid: 4746eb5ce1d6344f88b5b8beef9dfba2, type: 3}
       propertyPath: m_Name
       value: Skeleton_enemy (1)
@@ -2409,10 +2405,6 @@ PrefabInstance:
     - target: {fileID: 1647139386183164169, guid: 4746eb5ce1d6344f88b5b8beef9dfba2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4074649478222584536, guid: 4746eb5ce1d6344f88b5b8beef9dfba2, type: 3}
-      propertyPath: m_Name
-      value: HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 5312961409276128697, guid: 4746eb5ce1d6344f88b5b8beef9dfba2, type: 3}
       propertyPath: m_Name
