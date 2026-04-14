@@ -9,10 +9,13 @@ public class InputReader : MonoBehaviour
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
 
-    [SerializeField] private KeyCode[] _actionKeys;
-   
+    [SerializeField] private KeyCode _jumpKey = KeyCode.UpArrow;
+    [SerializeField] private KeyCode _attackKey = KeyCode.Space;
+
     public event Action<Vector2> InputAxesChanged;
-    public event Action<KeyCode> KeyPressed;
+
+    public event Action JumpKeyPressed;
+    public event Action AttackKeyPressed;
 
     private void Update()
     {
@@ -33,10 +36,10 @@ public class InputReader : MonoBehaviour
 
     private void ReadKeys()
     {
-        foreach (var key in _actionKeys)
-        {
-            if(Input.GetKeyDown(key))
-                KeyPressed?.Invoke(key);
-        }
+        if(Input.GetKeyDown(_jumpKey))
+            JumpKeyPressed?.Invoke();
+        
+        if(Input.GetKeyDown(_attackKey))
+            AttackKeyPressed?.Invoke();
     }
 }

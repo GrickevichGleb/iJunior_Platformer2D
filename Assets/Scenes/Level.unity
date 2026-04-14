@@ -259,7 +259,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0dcab98b5cda432391699f459a4d3b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actionKeys: 1101000020000000
+  _jumpKey: 273
+  _attackKey: 32
 --- !u!4 &185886672
 Transform:
   m_ObjectHideFlags: 0
@@ -496,8 +497,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1203,6 +1204,7 @@ GameObject:
   - component: {fileID: 1365447579}
   - component: {fileID: 1365447578}
   - component: {fileID: 1365447580}
+  - component: {fileID: 1365447581}
   m_Layer: 5
   m_Name: CoinsCounter
   m_TagString: Untagged
@@ -1229,7 +1231,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 170, y: 50}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1365447578
 MonoBehaviour:
@@ -1281,7 +1283,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1c3c53c99bb14467abcc09af1a59097, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: {fileID: 1857847757}
+--- !u!114 &1365447581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1365447576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f82e0382bd643d1a779937adbea1c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textField: {fileID: 1857847757}
+  _coinsCounter: {fileID: 1365447580}
 --- !u!1 &1465450207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,8 +1638,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1790,8 +1805,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inputReader: {fileID: 185886671}
-  _jumpKey: 273
-  _attackKey: 32
 --- !u!114 &1988739075
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2420,10 +2433,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
+  - {fileID: 20945832}
   - {fileID: 619394802}
   - {fileID: 1534871443}
   - {fileID: 1619969017}
-  - {fileID: 20945832}
   - {fileID: 185886672}
   - {fileID: 1988739073}
   - {fileID: 2099563157}

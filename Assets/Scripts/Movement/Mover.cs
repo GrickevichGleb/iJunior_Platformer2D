@@ -22,7 +22,6 @@ public class Mover : MonoBehaviour
     private Transform _transform;
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
-    private Visualizer _visualizer;
 
     private Vector2 _moveInput;
 
@@ -32,6 +31,8 @@ public class Mover : MonoBehaviour
     private bool _isJumping = false;
     private bool _canJump = true;
 
+    public event Action<float> Moving;
+
     private void Awake()
     {
         _currentMoveSpeed = _moveSpeed;
@@ -39,7 +40,6 @@ public class Mover : MonoBehaviour
         _transform = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
-        _visualizer = GetComponent<Visualizer>();
     }
 
     private void FixedUpdate()
@@ -63,7 +63,7 @@ public class Mover : MonoBehaviour
             _transform.rotation = Quaternion.Euler(0f, 180f, 0f);
         }
         
-        _visualizer.OnMovement(inputAxes.x);
+        Moving?.Invoke(inputAxes.x);
     }
     
     public void Jump()

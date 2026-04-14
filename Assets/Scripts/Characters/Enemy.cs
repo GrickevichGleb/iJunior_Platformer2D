@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour
         if (_target != null)
         {
             _playerChaser.Chase();
-            AttackIfPossible();
+            TryAttack();
         }
         else
         {
@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
         _platformPatroller.SetPatrolPoints();
     }
 
-    private void AttackIfPossible()
+    private void TryAttack()
     {
         float attackRangeSqr = _attacker.Range() * _attacker.Range();
         Vector3 direction = _target.transform.position - transform.position;
@@ -82,5 +82,7 @@ public class Enemy : MonoBehaviour
         _platformPatroller.enabled = false;
         _mover.enabled = false;
         _attacker.enabled = false;
+
+        this.enabled = false;
     }
 }

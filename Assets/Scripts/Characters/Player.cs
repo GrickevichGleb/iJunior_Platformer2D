@@ -9,9 +9,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] private InputReader _inputReader;
-    [SerializeField] private KeyCode _jumpKey = KeyCode.UpArrow;
-    [SerializeField] private KeyCode _attackKey = KeyCode.Space;
-
+    
     private Health _health;
     private Mover _mover;
     private Attacker _attacker;
@@ -26,7 +24,8 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         _inputReader.InputAxesChanged += OnInputAxes;
-        _inputReader.KeyPressed += OnKeyPressed;
+        _inputReader.JumpKeyPressed += OnJumpKeyPressed;
+        _inputReader.AttackKeyPressed += OnAttackKeyPressed;
 
         _health.Death += OnDeath;
     }
@@ -34,7 +33,8 @@ public class Player : MonoBehaviour
     private void OnDisable()
     {
         _inputReader.InputAxesChanged -= OnInputAxes;
-        _inputReader.KeyPressed -= OnKeyPressed;
+        _inputReader.JumpKeyPressed -= OnJumpKeyPressed;
+        _inputReader.AttackKeyPressed -= OnAttackKeyPressed;
         
         _health.Death -= OnDeath;
     }
@@ -45,15 +45,16 @@ public class Player : MonoBehaviour
         _mover.Move(axes);
     }
 
-    private void OnKeyPressed(KeyCode keyCode)
+    private void OnJumpKeyPressed()
     {
-        if(keyCode == _jumpKey)
-            _mover.Jump();
-        
-        if(keyCode == _attackKey)
-            _attacker.Attack();
+        _mover.Jump();
     }
 
+    private void OnAttackKeyPressed()
+    {
+        _attacker.Attack();
+    }
+    
     private void OnDeath()
     {
         _attacker.enabled = false;

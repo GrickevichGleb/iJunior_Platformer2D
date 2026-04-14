@@ -7,23 +7,18 @@ using UnityEngine;
 
 public class CoinsCounter : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _value;
-
     private int _coinsCollected = 0;
 
+    public event Action<int> CoinCollected;
+    
     private void Start()
     {
-        UpdateCounter();
+        CoinCollected?.Invoke(_coinsCollected);
     }
 
     public void Increment()
     {
         _coinsCollected++;
-        UpdateCounter();
-    }
-    
-    private void UpdateCounter()
-    {
-        _value.text = _coinsCollected.ToString();
+        CoinCollected?.Invoke(_coinsCollected);
     }
 }

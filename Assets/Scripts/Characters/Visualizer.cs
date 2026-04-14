@@ -10,7 +10,8 @@ public class Visualizer : MonoBehaviour
     private const string isWalking = nameof(isWalking);
     private const string attack = nameof(attack);
     private const string death = nameof(death);
-    
+
+    private Mover _mover;
     private Animator _animator;
     private Health _health;
     
@@ -20,6 +21,7 @@ public class Visualizer : MonoBehaviour
 
     private void Awake()
     {
+        _mover = GetComponent<Mover>();
         _animator = GetComponent<Animator>();
         _health = GetComponent<Health>();
         
@@ -30,15 +32,17 @@ public class Visualizer : MonoBehaviour
 
     private void OnEnable()
     {
+        _mover.Moving += OnMovement;
         _health.Death += OnDeath;
     }
 
     private void OnDisable()
     {
+        _mover.Moving -= OnMovement;
         _health.Death -= OnDeath;
     }
 
-    public void OnMovement(float inputX)
+    private void OnMovement(float inputX)
     {
         _animator.SetBool(_isWalkingAnimFlag, (inputX != 0));
     }

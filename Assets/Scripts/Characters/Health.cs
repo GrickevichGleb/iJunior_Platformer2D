@@ -24,8 +24,7 @@ public class Health : MonoBehaviour
         if (_isDead)
             return;
         
-        Current -= damage;
-        Current = Mathf.Clamp(Current, 0, Max);
+        Current = Mathf.Clamp(Current - damage, 0, Max);
         
         if (Current <= 0)
             Die();
