@@ -8,6 +8,6 @@ public class HealthPotion : MonoBehaviour
 
     public void Use(Health health)
     {
-        health.Heal(_healValue);
+        health.Increase(_healValue);
     }
 }

@@ -52,8 +52,8 @@ public class Attacker : MonoBehaviour
 
             if (hit.collider.TryGetComponent(out Health health))
             {
-                health.TakeDamage(_damage);
-                Debug.Log($"{hit.collider.name} got {_damage} damage, now has {health.Current()} health");
+                health.Decrease(_damage);
+                Debug.Log($"{hit.collider.name} got {_damage} damage, now has {health.Current} health");
             }
         }
         

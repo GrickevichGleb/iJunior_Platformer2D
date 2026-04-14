@@ -6,42 +6,44 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int _max = 100;
-
-    public event Action Death;
-
-    public int Max() => _max;
-    public int Current() => _current;
-    
-    private int _current;
     private bool _isDead = false;
-
+    
+    public event Action Changed;
+    public event Action Death;
+    
+    [field:SerializeField] public int Max { get; private set; } = 100;
+    public int Current { get; private set; }
+    
     private void Awake()
     {
-        _current = _max;
+        Current = Max;
     }
 
-    public void TakeDamage(int damage)
+    public void Decrease(int damage)
     {
         if (_isDead)
             return;
         
-        _current -= damage;
-
-        if (_current <= 0)
+        Current -= damage;
+        Current = Mathf.Clamp(Current, 0, Max);
+        
+        if (Current <= 0)
             Die();
+        
+        Changed?.Invoke();
     }
 
-    public void Heal(int amount)
+    public void Increase(int amount)
     {
-        _current = Mathf.Min(_current + amount, _max);
+        Current = Mathf.Min(Current + amount, Max);
+        Current = Mathf.Clamp(Current, 0, Max);
         
-        Debug.Log($"Health now: {_current}");
+        Changed?.Invoke();
     }
 
     private void Die()
     {
-        _current = 0;
+        Current = 0;
         _isDead = true;
         Death?.Invoke();
     }
