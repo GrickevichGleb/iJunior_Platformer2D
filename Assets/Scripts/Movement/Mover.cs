@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(GroundChecker))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Visualizer))]
 public class Mover : MonoBehaviour
@@ -15,13 +16,13 @@ public class Mover : MonoBehaviour
     [SerializeField] private float _jumpForce = 1f;
     [SerializeField] private float _jumpCooldown = 1f;
     [SerializeField] private float _inAirMoveModifier = 0.5f;
-    [SerializeField] private LayerMask _groundMask;
 
     public bool IsGrounded ()=> _isGrounded;
 
     private Transform _transform;
     private Rigidbody2D _rigidbody;
     private Collider2D _collider;
+    private GroundChecker _groundChecker;
 
     private Vector2 _moveInput;
 
@@ -40,11 +41,13 @@ public class Mover : MonoBehaviour
         _transform = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        _groundChecker = GetComponent<GroundChecker>();
     }
 
     private void FixedUpdate()
     {
-        CheckGrounded();
+        _isGrounded = _groundChecker.CheckGrounded();
+        
         ClampInAirMovement();
         PerformJump();
         PerformMovement();
@@ -145,18 +148,6 @@ public class Mover : MonoBehaviour
         }
     }
 
-    private void CheckGrounded()
-    {
-        float distance = MarginFloat;
-        
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, distance, _groundMask);
-
-        if (hit.collider != null)
-            _isGrounded = true;
-        else
-            _isGrounded = false;
-    }
-    
     private IEnumerator JumpCooldown(float seconds)
     {
         _canJump = false;

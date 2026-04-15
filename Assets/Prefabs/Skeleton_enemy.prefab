@@ -104,6 +104,7 @@ GameObject:
   - component: {fileID: 2400613273001438771}
   - component: {fileID: 10895166612518450}
   - component: {fileID: 21574648102354044}
+  - component: {fileID: 5776264247446832626}
   m_Layer: 7
   m_Name: Skeleton_enemy
   m_TagString: Untagged
@@ -269,9 +270,6 @@ MonoBehaviour:
   _jumpForce: 83
   _jumpCooldown: 1
   _inAirMoveModifier: 0.7
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &4866488819111028756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,6 +322,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spotDistance: 8
+--- !u!114 &5776264247446832626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5312961409276128697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f75794478874d88ade03125189eda0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1001 &2461205742880809926
 PrefabInstance:
   m_ObjectHideFlags: 0

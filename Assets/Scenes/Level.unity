@@ -382,7 +382,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 11
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1203,7 +1203,6 @@ GameObject:
   - component: {fileID: 1365447577}
   - component: {fileID: 1365447579}
   - component: {fileID: 1365447578}
-  - component: {fileID: 1365447580}
   - component: {fileID: 1365447581}
   m_Layer: 5
   m_Name: CoinsCounter
@@ -1271,18 +1270,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365447576}
   m_CullTransparentMesh: 1
---- !u!114 &1365447580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1365447576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1c3c53c99bb14467abcc09af1a59097, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1365447581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1296,7 +1283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textField: {fileID: 1857847757}
-  _coinsCounter: {fileID: 1365447580}
+  _coinsCounter: {fileID: 1988739083}
 --- !u!1 &1465450207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,8 +1691,11 @@ GameObject:
   - component: {fileID: 1988739075}
   - component: {fileID: 1988739077}
   - component: {fileID: 1988739078}
-  - component: {fileID: 1988739079}
   - component: {fileID: 1988739081}
+  - component: {fileID: 1988739082}
+  - component: {fileID: 1988739085}
+  - component: {fileID: 1988739084}
+  - component: {fileID: 1988739083}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1823,9 +1813,6 @@ MonoBehaviour:
   _jumpForce: 83
   _jumpCooldown: 0.8
   _inAirMoveModifier: 0.7
-  _groundMask:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!95 &1988739076
 Animator:
   serializedVersion: 5
@@ -1874,19 +1861,6 @@ MonoBehaviour:
   _damage: 50
   _range: 2.5
   _cooldown: 1
---- !u!114 &1988739079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988739069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 673ec4a0158e84af5adb95832d92d33f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _coinsCounter: {fileID: 1365447580}
 --- !u!114 &1988739081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1900,6 +1874,57 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Max>k__BackingField: 100
+--- !u!114 &1988739082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988739069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39f75794478874d88ade03125189eda0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &1988739083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988739069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1c3c53c99bb14467abcc09af1a59097, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1988739084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988739069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528cc1cd28c134daa91158c565863807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1988739085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1988739069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cba354d81a6124b2cadad17742ccf835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2090937180
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class PlatformPatroller : MonoBehaviour
     private const float PlatformEdgeDistance = 0.5f;
     
     [SerializeField] private LayerMask _groundMask;
+    [SerializeField] private float _waypointSwitchDelay = 2f;
     
     private Mover _mover;
     
@@ -44,7 +45,7 @@ public class PlatformPatroller : MonoBehaviour
         
         if (HasReachedWayPoint())
         {
-            StartCoroutine(StopForSecondsCoroutine(2f));
+            StartCoroutine(StopForSecondsCoroutine(_waypointSwitchDelay));
             SetNextWayPointInd();
         }
         
@@ -98,7 +99,7 @@ public class PlatformPatroller : MonoBehaviour
 
     private void SetNextWayPointInd()
     {
-        int newIndex = (_currentWayPointInd + 1) % _wayPoints.Length;
+        int newIndex = ++_currentWayPointInd % _wayPoints.Length;
         
         _currentWayPointInd = newIndex;
         _currentWayPoint = _wayPoints[newIndex];
