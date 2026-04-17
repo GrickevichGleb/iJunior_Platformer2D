@@ -12,10 +12,13 @@ public class InputReader : MonoBehaviour
     [SerializeField] private KeyCode _jumpKey = KeyCode.UpArrow;
     [SerializeField] private KeyCode _attackKey = KeyCode.Space;
 
+    [SerializeField] private KeyCode _vampirismKey = KeyCode.V; 
     public event Action<Vector2> InputAxesChanged;
 
     public event Action JumpKeyPressed;
     public event Action AttackKeyPressed;
+
+    public event Action VampirismKeyPressed;
 
     private void Update()
     {
@@ -41,5 +44,8 @@ public class InputReader : MonoBehaviour
         
         if(Input.GetKeyDown(_attackKey))
             AttackKeyPressed?.Invoke();
+
+        if (Input.GetKeyDown(_vampirismKey))
+            VampirismKeyPressed?.Invoke();
     }
 }
