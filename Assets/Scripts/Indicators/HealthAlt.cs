@@ -1,23 +1,20 @@
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : ProgressBarValue
+public class HealthAlt : ProgressBarValue
 {
-    [SerializeField] private BarIndicator _healthBar;
-    
     private bool _isDead = false;
     
     public event Action Death;
     
-    private void Awake()
+    private void Start()
     {
         Current = Max;
     }
 
-    public new void Decrease(float amount)
+    public void Decrease(float amount)
     {
         if (_isDead)
             return;
@@ -32,7 +29,6 @@ public class Health : ProgressBarValue
     {
         Current = 0;
         _isDead = true;
-        _healthBar.gameObject.SetActive(false);
         Death?.Invoke();
     }
 }

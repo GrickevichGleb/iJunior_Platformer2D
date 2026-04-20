@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6454244764328366416}
   - component: {fileID: 4637363160798024749}
   m_Layer: 5
-  m_Name: HealthBar
+  m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 2339013158961559119}
   - component: {fileID: 6738711515162377688}
   m_Layer: 7
-  m_Name: HealthBar
+  m_Name: ProgressBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,7 +278,7 @@ GameObject:
   - component: {fileID: 2638876281293133563}
   - component: {fileID: 1698985857675857732}
   - component: {fileID: 6430461444915765183}
-  - component: {fileID: 5238840437029699091}
+  - component: {fileID: 980677791793752256}
   m_Layer: 5
   m_Name: HealthBar
   m_TagString: Untagged
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5238840437029699091
+--- !u!114 &980677791793752256
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -353,9 +353,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8775236017051002313}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be432fc34ac62457485747f8dd95f60c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1137653e21af248cbbb59aa943ba69bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: {fileID: 0}
+  _barValue: {fileID: 0}
   _fillerImage: {fileID: 3698810875044777466}
   _changeSpeed: 1

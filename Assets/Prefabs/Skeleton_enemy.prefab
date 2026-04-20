@@ -225,6 +225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Max>k__BackingField: 100
+  <Min>k__BackingField: 0
+  _healthBar: {fileID: 3439594340642769670}
 --- !u!114 &7976649659830620514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,6 +287,7 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 64
+  _waypointSwitchDelay: 2
 --- !u!114 &2400613273001438771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -345,9 +348,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1647139386183164169}
     m_Modifications:
+    - target: {fileID: 980677791793752256, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
+      propertyPath: _barValue
+      value: 
+      objectReference: {fileID: 1040126239920339589}
     - target: {fileID: 1921882046506989854, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
       propertyPath: m_Name
-      value: HealthBar
+      value: CharCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 3429742750762999433, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
       propertyPath: m_Pivot.x
@@ -443,3 +450,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3429742750762999433, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
   m_PrefabInstance: {fileID: 2461205742880809926}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3439594340642769670 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 980677791793752256, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
+  m_PrefabInstance: {fileID: 2461205742880809926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1137653e21af248cbbb59aa943ba69bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

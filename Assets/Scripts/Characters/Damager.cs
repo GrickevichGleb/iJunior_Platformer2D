@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Damager : MonoBehaviour
 {
-    [SerializeField] private int _damageAmount = 20;
+    [SerializeField] private float _damageAmount = 20f;
 
-    public void DealDamage(Health health)
+    public void DealDamage(Health health, float multiplier = 1f)
     {
-        health.Decrease(_damageAmount);
+        health.Decrease(_damageAmount * multiplier);
     }
 }

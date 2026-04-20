@@ -1100,9 +1100,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1988739073}
     m_Modifications:
+    - target: {fileID: 980677791793752256, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
+      propertyPath: _barValue
+      value: 
+      objectReference: {fileID: 1988739081}
     - target: {fileID: 1921882046506989854, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
       propertyPath: m_Name
-      value: HealthBar
+      value: CharCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 3429742750762999433, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
       propertyPath: m_Pivot.x
@@ -1184,10 +1188,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5238840437029699091, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
-      propertyPath: Health
-      value: 
-      objectReference: {fileID: 1988739081}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1471,8 +1471,11 @@ MonoBehaviour:
   _health: {fileID: 1988739081}
   _damager: {fileID: 1493830036}
   _healer: {fileID: 1493830035}
+  _enemiesLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
   _abilityVisual: {fileID: 1493830033}
-  _range: 12
+  _range: 6
   _duration: 6
   _cooldownTime: 4
 --- !u!114 &1493830035
@@ -1487,7 +1490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad93b17010c764c05bb9503f3c8a5ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healAmount: 20
+  _healAmount: 50
 --- !u!114 &1493830036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1500,7 +1503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba7d8edecebd34bd39beb635dcbada94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageAmount: 20
+  _damageAmount: 50
 --- !u!1 &1534871441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,6 +1677,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97aeba0b6a2364a8cbf0138d96903b83, type: 3}
+--- !u!114 &1760242226 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 980677791793752256, guid: e787b20209b7740bba5412c1282dda2a, type: 3}
+  m_PrefabInstance: {fileID: 1351686615}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1137653e21af248cbbb59aa943ba69bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1857847755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1946,7 +1960,7 @@ MonoBehaviour:
   _runSpeedMultiplier: 2
   _moveForce: 210
   _jumpForce: 83
-  _jumpCooldown: 0.8
+  _jumpCooldown: 0.5
   _inAirMoveModifier: 0.7
 --- !u!95 &1988739076
 Animator:
@@ -2009,6 +2023,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Max>k__BackingField: 100
+  <Min>k__BackingField: 0
+  _healthBar: {fileID: 1760242226}
 --- !u!114 &1988739082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2595,6 +2611,10 @@ PrefabInstance:
     - target: {fileID: 5312961409276128697, guid: 4746eb5ce1d6344f88b5b8beef9dfba2, type: 3}
       propertyPath: m_Name
       value: Skeleton_enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6620312614998509071, guid: 4746eb5ce1d6344f88b5b8beef9dfba2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

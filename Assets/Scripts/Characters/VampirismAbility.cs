@@ -10,18 +10,27 @@ public class VampirismAbility : MonoBehaviour
     [SerializeField] private Damager _damager;
     [SerializeField] private Healer _healer;
 
+    [SerializeField] private LayerMask _enemiesLayerMask;
     [SerializeField] private SpriteRenderer _abilityVisual;
-    [SerializeField] private float _range = 12f;
+    [SerializeField] private float _range = 6f;
     [SerializeField] private float _duration = 6f;
     [SerializeField] private float _cooldownTime = 4f;
 
+    private ContactFilter2D _contactFilter;
+    
     private float _startTime;
     private bool _isActive = false;
     private bool _isReady = true;
 
+    private Collider2D[] _enemiesWithinRange = new Collider2D[1];
+
+    private Collider2D _targetCollider;
+    private Health _targetHealth;
+    
     private void Start()
     {
         _abilityVisual.forceRenderingOff = true;
+        _contactFilter.SetLayerMask(_enemiesLayerMask);
     }
 
     public void TryUseAbility()
@@ -30,6 +39,23 @@ public class VampirismAbility : MonoBehaviour
             return;
 
         StartCoroutine(DrainHealth());
+    }
+    
+    private void GetTarget()
+    {
+        Collider2D[] enemies = Physics2D.OverlapCircleAll(_abilityVisual.transform.position, _range, _enemiesLayerMask);
+        if (enemies.Length > 0)
+        {
+            if (_targetCollider != enemies[0])
+                _targetHealth = enemies[0].GetComponent<Health>();
+            
+            _targetCollider = enemies[0];
+        }
+        else
+        {
+            _targetCollider = null;
+            _targetHealth = null;
+        }
     }
     
     private IEnumerator Recharge()
@@ -51,8 +77,13 @@ public class VampirismAbility : MonoBehaviour
         
         while (Time.time - _startTime < _duration)
         {
-            //_damager.DealDamage(target);
-            _healer.Heal(_health);
+            GetTarget();
+            
+            if (_targetHealth != null)
+            {
+                _damager.DealDamage(_targetHealth, Time.deltaTime / _duration);
+                _healer.Heal(_health, Time.deltaTime / _duration);
+            }
 
             yield return null;
         }
@@ -61,10 +92,5 @@ public class VampirismAbility : MonoBehaviour
         _abilityVisual.forceRenderingOff = true;
 
         StartCoroutine(Recharge());
-    }
-
-    private void SetSpriteVisible(bool visible)
-    {
-        
     }
 }
