@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VampirismAbility : MonoBehaviour
+public class VampirismAbility : ProgressBarValue
 {
     [SerializeField] private Health _health;
     
@@ -19,10 +19,9 @@ public class VampirismAbility : MonoBehaviour
     private ContactFilter2D _contactFilter;
     
     private float _startTime;
+    private float _finishTime;
     private bool _isActive = false;
     private bool _isReady = true;
-
-    private Collider2D[] _enemiesWithinRange = new Collider2D[1];
 
     private Collider2D _targetCollider;
     private Health _targetHealth;
@@ -31,6 +30,10 @@ public class VampirismAbility : MonoBehaviour
     {
         _abilityVisual.forceRenderingOff = true;
         _contactFilter.SetLayerMask(_enemiesLayerMask);
+
+        Max = _cooldownTime;
+        Min = 0f;
+        Increase(Max);
     }
 
     public void TryUseAbility()
@@ -38,12 +41,14 @@ public class VampirismAbility : MonoBehaviour
         if (_isActive || !_isReady)
             return;
 
+        Decrease(Max);
         StartCoroutine(DrainHealth());
     }
     
     private void GetTarget()
     {
         Collider2D[] enemies = Physics2D.OverlapCircleAll(_abilityVisual.transform.position, _range, _enemiesLayerMask);
+        
         if (enemies.Length > 0)
         {
             if (_targetCollider != enemies[0])
@@ -58,19 +63,23 @@ public class VampirismAbility : MonoBehaviour
         }
     }
     
+    
     private IEnumerator Recharge()
     {
         _isReady = false;
+        _finishTime = Time.time;
 
-        yield return new WaitForSeconds(_cooldownTime);
+        while (Time.time - _finishTime < _cooldownTime)
+        {
+            Increase(Time.deltaTime);
+            yield return null;
+        }
 
         _isReady = true;
     }
     
     private IEnumerator DrainHealth()
     {
-        Debug.Log("Vampirism");
-        
         _abilityVisual.forceRenderingOff = false;
         _startTime = Time.time;
         _isActive = true;

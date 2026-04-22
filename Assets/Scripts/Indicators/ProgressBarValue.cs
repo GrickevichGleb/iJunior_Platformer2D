@@ -7,8 +7,8 @@ public class ProgressBarValue : MonoBehaviour
 {
     public event Action Changed;
     
-    [field:SerializeField] public float Max { get; private set; } = 100f;
-    [field:SerializeField] public float Min { get; private set; } = 0f;
+    [field:SerializeField] public float Max { get; protected set; } = 100f;
+    [field:SerializeField] public float Min { get; protected set; } = 0f;
     
     public float Current { get; protected set; }
 
